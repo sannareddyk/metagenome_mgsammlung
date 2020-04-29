@@ -18,7 +18,7 @@ mgsammlung/
 │   ├── CF
 │   ├── COPD
 │   ├── grumaz_2020_minion
-│   ├── sepsis_2020_rosenboom
+│   ├── sepsis_2020_rxx
 │   └── wheezer
 ├── metadata
 │   ├── CF
