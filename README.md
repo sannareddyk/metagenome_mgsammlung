@@ -17,7 +17,6 @@ mgsammlung/
 ├── fastq
 │   ├── CF
 │   ├── COPD
-│   ├── COPD_bals
 │   ├── grumaz_2020_minion
 │   ├── sepsis_2020_rosenboom
 │   └── wheezer
