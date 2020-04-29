@@ -29,3 +29,11 @@ mgsammlung/
 └── scripts
     └── metagen_mgsammlung
 ```
+Renamed FASTQ file format:
+```bash
+COPD
+├── COPD1_D_MG000001_2016_R1.fastq
+├── COPD1_D_MG000001_2016_R2.fastq
+├── COPD1_D_MG000005_2016_R1.fastq
+├── COPD1_D_MG000005_2016_R2.fastq
+```
