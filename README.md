@@ -2,6 +2,7 @@
 An automated continuous analytics pipeline for metagenomics datasets.
 
 Current dir structure:
+```bash
 mgsammlung/
 ├── analysis
 │   ├── 2020_01_15
@@ -27,3 +28,4 @@ mgsammlung/
 │   └── wheezer
 └── scripts
     └── metagen_mgsammlung
+```
