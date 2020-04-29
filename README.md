@@ -37,3 +37,20 @@ COPD
 ├── COPD1_D_MG000005_2016_R1.fastq
 ├── COPD1_D_MG000005_2016_R2.fastq
 ```
+Analysis folder structure:
+```bash
+2020_01_15
+└── wochenende1_2
+    ├── COPD1_D_MG000001_2016_R1.ndp.fastq
+    ├── COPD1_D_MG000001_2016_R1.ndp.fastq.stats
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.fastq
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc_seqs.fq.fastq
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.trm.s.mq30.01mm.bam
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.trm.s.mq30.01mm.dup.bam
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.trm.s.mq30.01mm.dup.bam.bai
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.trm.s.mq30.01mm.dup.calmd.bam
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.trm.s.mq30.01mm.dup.calmd.bam.bai
+    ├── COPD1_D_MG000001_2016_R1.ndp.lc.trm.s.mq30.bam
+    ├── fastqc
+    └── stats  
+ ```
