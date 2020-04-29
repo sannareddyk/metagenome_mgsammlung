@@ -61,5 +61,7 @@ Metadata at the moment in stored in each sub-folder in xlsx format
 Scripts:
 
 metagen_mgsammlung on gitlab
+
 updated versions of Wochenende pipeline from github public repository, https://github.com/MHH-RCUG/Wochenende
+
 other tools, kraken-uniq, latest version available on gitlab and the RCUG cluster
