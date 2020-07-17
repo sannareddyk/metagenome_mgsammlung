@@ -18,10 +18,7 @@ import sys
 import subprocess
 import glob
 from datetime import date
-import threading
-import time
 
-start = time.time()
 
 version = 0.11
 print("Version: " + str(version))
@@ -64,7 +61,8 @@ def runWochenende(stage_infile):
     # run Wochenende pipeline
     global dirNameWochenende
     stage = "run Wochenende pipeline"
-    dirNameWochenende = "analysis/" + getDate() + "Wochenende" + wochenendeVersion
+    #edit analysis path as needed
+    dirNameWochenende = "/path/to/analysis/" + getDate() + "Wochenende" + wochenendeVersion
     #print(dirNameWochenende)
 
     if not os.path.exists(dirNameWochenende):
@@ -73,14 +71,14 @@ def runWochenende(stage_infile):
     #else:
 	#print("Directory",dirNameWochenende,"already exists")
 
-    wochenendeCmd = ['sbatch', 'run_Wochenende_SLURM.sh', stage_infile]
+    wochenendeCmd = ['sbatch', 'run_Wochenende_SLURM.sh', stage_infile, dirNameWochenende]
     runStage(stage, wochenendeCmd)
 
 def runKrakenuniq(stage_infile):
     ##krakenuniq pipeline
     global dirNameKrakenuniq
     stage = "run Krakenuniq pipeline"
-    dirNameKrakenuniq = "analysis/" + getDate() + "KrakenUniq" + krakenUniqVersion
+    dirNameKrakenuniq = "/path/to/analysis/" + getDate() + "KrakenUniq" + krakenUniqVersion
     
 
     if not os.path.exists(dirNameKrakenuniq):
@@ -89,7 +87,7 @@ def runKrakenuniq(stage_infile):
     #else:
 	#print("Directory", dirNameKrakenuniq, "already exists")
 
-    krakenuniqCmd = ['sbatch', 'run_krakenuniq_SLURM.sh', stage_infile]
+    krakenuniqCmd = ['sbatch', 'run_krakenuniq_SLURM.sh', stage_infile, dirNameKrakenuniq]
     runStage(stage, krakenuniqCmd)
 
 ###########
@@ -100,15 +98,6 @@ def main():
         for file in glob.glob("*R1.fastq"):
             runWochenende(file)
             runKrakenuniq(file)
-        
-        #while True:
-           # if time.time() - start >1800:
-                #break
-                #os.system("sh cleanup.sh")
-                #os.system("mv stats " + dirNameWochenende)
-                #os.system("mv fastqc " + dirNameWochenende)
-                #os.system("mv *.report.txt " + dirNameKrakenuniq)
-                #os.system("mv *.xlsx " + dirNameKrakenuniq)
         
 main()
 
