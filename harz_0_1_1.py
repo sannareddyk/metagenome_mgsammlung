@@ -62,7 +62,7 @@ def runWochenende(stage_infile):
     global dirNameWochenende
     stage = "run Wochenende pipeline"
     #edit analysis path as needed
-    dirNameWochenende = "/path/to/analysis/" + getDate() + "Wochenende" + wochenendeVersion
+    dirNameWochenende = "analysis/" + getDate() + "Wochenende" + wochenendeVersion
     #print(dirNameWochenende)
 
     if not os.path.exists(dirNameWochenende):
@@ -78,7 +78,7 @@ def runKrakenuniq(stage_infile):
     ##krakenuniq pipeline
     global dirNameKrakenuniq
     stage = "run Krakenuniq pipeline"
-    dirNameKrakenuniq = "/path/to/analysis/" + getDate() + "KrakenUniq" + krakenUniqVersion
+    dirNameKrakenuniq = "analysis/" + getDate() + "KrakenUniq" + krakenUniqVersion
     
 
     if not os.path.exists(dirNameKrakenuniq):
