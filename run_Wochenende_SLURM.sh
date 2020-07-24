@@ -1,6 +1,7 @@
 #!/bin/bash
-## A SLURM sbatch script which is part of the Wochenende Pipeline
-## Supply the FASTA input as arg1, bash run_Wochenende_slurm.sh in_R1.fastq
+## A SLURM sbatch script which is part of the Wochenende Pipeline https://github.com/MHH-RCUG/Wochenende
+## Supply the FASTQ read input as arg1, bash run_Wochenende_slurm.sh in_R1.fastq
+## Reference fasta sequences and adapters should be configured in run_Wochenende.py
 
 # set partition
 #SBATCH -p normal
@@ -12,7 +13,7 @@
 #SBATCH --cpus-per-task 12
 
 # set max wallclock time
-# SBATCH --time=47:00:00
+#SBATCH --time=47:00:00
 
 # set name of job
 #SBATCH --job-name=Wochenende
@@ -44,33 +45,35 @@ conda activate wochenende >> /dev/null
 #--aligner bwamem
 #--aligner minimap2
 #--aligner ngmlr
-#--no_abra
-#--mq30
+#--nextera  - remove Nextera adapters with Trimmomatic, not default Ultra II / Truseq adapters
+#--no_abra  - no read realignment
+#--mq30     - remove reads with a mapping quality of less than 30
 #--readType SE
 #--readType PE
 #--debug
 #--force_restart
 #--remove_mismatching
 #--no_duplicate_removal
-#--no_prinseq
+#--no_prinseq   - do not filter out initial reads using prinseq
 #--no_fastqc
 #--testWochenende - runs the test scripts with test reads vs a testDB and checks if all seems well.
-#--fastp - fastp is recommended as a trimmer for SOLiD data which can auto find adapters
+#--fastp - fastp is recommended as an alternative trimmer to Trimmomatic if you are having adapter problems
 
 cpus=12
 
 # Run script - Paired end reads R2 will be calculated by replacing R1 with R2
-# Uncomment/adapt the line only you want to run
+# Uncomment/adapt the only line you want to run
 
 
 
 
 
 # 2020_03 reference
-python3 run_Wochenende.py --metagenome 2020_03_meta_human --threads $cpus --no_prinseq --aligner bwamem --no_abra --mq30 --remove_mismatching --readType SE --debug --force_restart $fastq
+#python3 run_Wochenende.py --metagenome 2020_03_meta_human --threads $cpus --aligner bwamem --no_abra --mq30 --remove_mismatching --readType SE --debug --force_restart $fastq
+python3 run_Wochenende.py --metagenome 2020_03_meta_human --threads $cpus --aligner bwamem --nextera --no_abra --mq30 --remove_mismatching --readType SE --debug --force_restart $fastq
+#python3 run_Wochenende.py --metagenome 2020_03_meta_human --threads $cpus --aligner minimap2 --longread --no_abra --mq30 --remove_mismatching --readType SE --debug --force_restart $fastq
 
 sbatch --dependency=singleton --job-name=Wochenende wochenende_cleanup.sh $outDir
-
 
 ## 2019 10 October metagenomes
 #python3 run_Wochenende.py --metagenome 2019_10_meta_human --threads $cpus --aligner bwamem --no_abra --mq30 --remove_mismatching --readType SE --debug --force_restart $fastq

@@ -23,7 +23,7 @@ from datetime import date
 version = 0.11
 print("Version: " + str(version))
 
-wochenendeVersion = "1_6_7"
+wochenendeVersion = "1_7_1"
 print("wochenendeVersion: " + wochenendeVersion)
 
 krakenUniqVersion = "1_1"
